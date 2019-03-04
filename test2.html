@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>Template essai pour app_mailing</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+        <script type="text/javascript" src="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="http://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.css" />
+    </head>
+    <body>
+        <div id="tab-example">
+            <div id="tabs" style="width: 100%; height: 29px;"></div>
+                <div id="tab1" class="tab">
+                    <div id="layout" style="width: 100%; height: 600px;"></div>
+                </div>
+                <div id="tab2" class="tab">
+                        <div id="layout2" style="width: 100%; height: 600px;"></div>
+                </div>
+        </div>
+    
+    
+    <script type="text/javascript">
+
+// Création des tabs
+var config = {
+    tabs: {
+        name: 'tabs',
+        active: 'tab1',
+        tabs: [
+            { id: 'tab1', caption: 'Prospects' },
+            { id: 'tab2', caption: 'Paramètres' },
+        ],
+        onClick: function (event) {
+            $('#tab-example .tab').hide();
+            $('#tab-example #' + event.target).show();
+        }
+    }
+}
+
+$(function () {
+    $('#tabs').w2tabs(config.tabs);
+    $('#tab1').show();
+});
+
+// Création du layout 1er onglet (Prospects)
+    $(function () {
+        var pstyle = 'background-color: #F0F0C1; border: 1px solid #dfdfdf; padding: 5px;';
+        $('#layout').w2layout({
+            name: 'layout',
+            panels: [
+                { type: 'left', resizable: true, style: pstyle, content: ''},
+                { type: 'main', resizable: true, style: pstyle, content: ''}
+                ]
+        })
+    });
+    
+ 
+    
+    $(function(){
+    w2ui['layout'].content('left', 
+    $('#grid').w2grid({ 
+        name   : 'grid',
+        header : 'Grille Prospects',
+        show: { 
+                header : true,
+                toolbar: true,
+                footer: true,
+                toolbarAdd: true,
+                toolbarDelete: true,
+                toolbarSave: true,
+                toolbarEdit: true
+            },
+            searches: [                
+                { field: 'nom_prenom', caption: 'Nom_Prénom', type: 'text' },
+                { field: 'etab', caption: 'Etablissement', type: 'text' },
+                { field: 'email', caption: 'Email', type: 'text' }
+            ],
+        columns: [                
+            { field: 'nom_prenom', caption: 'Nom_Prénom', size: '40%' },
+            { field: 'email', caption: 'Email', size: '40%' },
+            { field: 'email2', caption: 'Email2', size: '120px' },
+            { field: 'etab', caption: 'Etablissement', size: '30%' },
+            { field: 'langue', caption: 'Langue', size: '30%' },
+            { field: 'clientIste', caption: 'Client Iste', size: '30%' },
+            { field: 'membreEditorial', caption: 'Membre editorial', size: '30%' },
+        ],
+        records: [
+            { recid: 1, fname: 'John', lname: 'Doe', email: 'jdoe@gmail.com', sdate: '4/3/2012' }
+        ]
+        }))
+    });
+    
+    $(function(){
+    w2ui['layout'].content('main', 
+    $('#grid2').w2grid({ 
+        name   : 'grid2',
+        header : 'Historique des envois',
+        show  : {
+          header : true,
+          toolbar: true,
+        },
+        columns: [                
+            { field: 'date_envoi', caption: 'Date dernier mail', size: '40%' },
+            { field: 'nombre_mail', caption: 'Nombre de mails envoyé', size: '20%' },
+            { field: 'date_creation', caption: 'Date de création prospect', size: '40%' },
+        ],
+        records: [
+            { recid: 1, fname: 'John', lname: 'Doe', email: 'jdoe@gmail.com', sdate: '4/3/2012' }
+        ]
+        }))
+    });
+
+// Création du layout 2e onglet (Paramètres)
+$(function () {
+        var pstyle = 'background-color: #F0F0C1; border: 1px solid #dfdfdf; padding: 5px;';
+        $('#layout2').w2layout({
+            name: 'layout2',
+            panels: [
+                { type: 'left', resizable: true, style: pstyle, content: ''},
+                { type: 'main', resizable: true, style: pstyle, content: ''}
+                ]
+        })
+    });
+    
+ 
+    
+    $(function(){
+    w2ui['layout2'].content('left', 
+    $('#grid3').w2grid({ 
+        name   : 'grid3',
+        header : 'Etablissement',
+        show: { 
+                header : true,
+                toolbar: true,
+                footer: true,
+                toolbarAdd: true,
+                toolbarDelete: true,
+                toolbarSave: true,
+                toolbarEdit: true
+            },
+            searches: [                
+                { field: 'nom_prenom', caption: 'Nom_Prénom', type: 'text' },
+                { field: 'etab', caption: 'Etablissement', type: 'text' },
+                { field: 'email', caption: 'Email', type: 'text' }
+            ],
+        columns: [                
+            { field: 'nom_prenom', caption: 'Nom_Prénom', size: '40%' },
+            { field: 'email', caption: 'Email', size: '40%' },
+            { field: 'email2', caption: 'Email2', size: '120px' },
+            { field: 'etab', caption: 'Etablissement', size: '30%' },
+            { field: 'langue', caption: 'Langue', size: '30%' },
+            { field: 'clientIste', caption: 'Client Iste', size: '30%' },
+            { field: 'membreEditorial', caption: 'Membre editorial', size: '30%' },
+        ],
+        records: [
+            { recid: 1, fname: 'John', lname: 'Doe', email: 'jdoe@gmail.com', sdate: '4/3/2012' }
+        ]
+        }))
+    });
+    
+    $(function(){
+    w2ui['layout2'].content('main', 
+    $('#grid4').w2grid({ 
+        name   : 'grid4',
+        header : 'Nomenclature',
+        show  : {
+          header : true,
+          toolbar: true,
+        },
+        columns: [                
+            { field: 'date_envoi', caption: 'Date dernier mail', size: '40%' },
+            { field: 'nombre_mail', caption: 'Nombre de mails envoyé', size: '20%' },
+            { field: 'date_creation', caption: 'Date de création prospect', size: '40%' },
+        ],
+        records: [
+            { recid: 1, fname: 'John', lname: 'Doe', email: 'jdoe@gmail.com', sdate: '4/3/2012' }
+        ]
+        }))
+    });
+
+
+</script>
+    
+</body>
+</html>
