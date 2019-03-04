@@ -37,7 +37,7 @@ $(function () {
 var pstyle = 'background-color: #F0F0C1; border: 1px solid #dfdfdf; padding: 5px;';
 $(function(){
 w2ui['layout'].content('main', 
-$('#layout2').w2layout({
+$('#layout').w2layout({
   name: 'layout2',
         panels: [
             { type: 'left', size: '50%', resizable: true, style: pstyle, content: 'left' },
@@ -62,8 +62,8 @@ $('#grid').w2grid({
             toolbarEdit: true
         },
         searches: [                
-            { field: 'lname', caption: 'Last Name', type: 'text' },
-            { field: 'fname', caption: 'First Name', type: 'text' },
+            { field: 'nom_prenom', caption: 'Nom_Prénom', type: 'text' },
+            { field: 'etab', caption: 'Etablissement', type: 'text' },
             { field: 'email', caption: 'Email', type: 'text' }
         ],
     columns: [                
@@ -98,11 +98,6 @@ $('#grid2').w2grid({
       header : true,
       toolbar: true,
     },
-    searches: [                
-            { field: 'lname', caption: 'Last Name', type: 'text' },
-            { field: 'fname', caption: 'First Name', type: 'text' },
-            { field: 'email', caption: 'Email', type: 'text' }
-    ],
     columns: [                
         { field: 'date_envoi', caption: 'Date dernier mail', size: '40%' },
         { field: 'nombre_mail', caption: 'Nombre de mails envoyé', size: '20%' },
