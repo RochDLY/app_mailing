@@ -69,8 +69,8 @@ CREATE TABLE IF NOT EXISTS `prospection`.`prospect_nomenclature` (
   `id_nomenclature` INT NOT NULL,
   `maj` VARCHAR(45) NULL,
   PRIMARY KEY (`id_prospect`, `id_nomenclature`),
-  INDEX `fk_prospect_has_nomenclature_nomenclature1_idx` (`id_nomenclature` ASC) VISIBLE,
-  INDEX `fk_prospect_has_nomenclature_prospect_idx` (`id_prospect` ASC) VISIBLE,
+  INDEX `fk_prospect_has_nomenclature_nomenclature1_idx` (`id_nomenclature` ASC),
+  INDEX `fk_prospect_has_nomenclature_prospect_idx` (`id_prospect` ASC),
   CONSTRAINT `fk_prospect_has_nomenclature_prospect`
     FOREIGN KEY (`id_prospect`)
     REFERENCES `mydb`.`prospect` (`id_prospect`)
@@ -104,8 +104,8 @@ CREATE TABLE IF NOT EXISTS `prospection`.`prospect_export` (
   `export_id_export` INT NOT NULL,
   `maj` VARCHAR(45) NULL,
   PRIMARY KEY (`id_prospect`, `export_id_export`),
-  INDEX `fk_prospect_has_export_export1_idx` (`export_id_export` ASC) VISIBLE,
-  INDEX `fk_prospect_has_export_prospect1_idx` (`id_prospect` ASC) VISIBLE,
+  INDEX `fk_prospect_has_export_export1_idx` (`export_id_export` ASC),
+  INDEX `fk_prospect_has_export_prospect1_idx` (`id_prospect` ASC),
   CONSTRAINT `fk_prospect_has_export_prospect1`
     FOREIGN KEY (`id_prospect`)
     REFERENCES `mydb`.`prospect` (`id_prospect`)
@@ -127,8 +127,8 @@ CREATE TABLE IF NOT EXISTS `prospection`.`prospect_etab` (
   `id_etab` INT NOT NULL,
   `maj` DATETIME NULL,
   PRIMARY KEY (`id_prospect`, `id_etab`),
-  INDEX `fk_prospect_has_etablissement_etablissement1_idx` (`id_etab` ASC) VISIBLE,
-  INDEX `fk_prospect_has_etablissement_prospect1_idx` (`id_prospect` ASC) VISIBLE,
+  INDEX `fk_prospect_has_etablissement_etablissement1_idx` (`id_etab` ASC),
+  INDEX `fk_prospect_has_etablissement_prospect1_idx` (`id_prospect` ASC),
   CONSTRAINT `fk_prospect_has_etablissement_prospect1`
     FOREIGN KEY (`id_prospect`)
     REFERENCES `mydb`.`prospect` (`id_prospect`)
@@ -167,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `prospection`.`import_data` (
   `type_obj` VARCHAR(45) NULL,
   `action_obj` VARCHAR(45) NULL,
   PRIMARY KEY (`id_import_data`, `id_import`),
-  INDEX `fk_import_data_import1_idx` (`id_import` ASC) VISIBLE,
+  INDEX `fk_import_data_import1_idx` (`id_import` ASC),
   CONSTRAINT `fk_import_data_import1`
     FOREIGN KEY (`id_import`)
     REFERENCES `mydb`.`import` (`id_import`)
